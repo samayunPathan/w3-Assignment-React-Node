@@ -1,0 +1,228 @@
+.user-r{
+    margin: 30px;
+}
+.user-rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .host-card {
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .host-card-1 {
+    display: flex;
+    flex-basis: 50%;
+    border: 3px solid rebeccapurple;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .host-card-1-2 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+  }
+  
+  .host-card-1-2>div {
+    margin-bottom: 20px;
+  
+  }
+  
+  .host-card-2 {
+    flex-basis: 50%;
+    padding-top: 15px;
+  
+  }
+  
+  .host-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 24px;
+  }
+  
+  .host-info {
+    flex: 1;
+  }
+  
+  .host-name {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+  }
+  
+  .superhost-badge {
+    background-color: #FF385C;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 8px;
+  }
+  
+  .co-host-card {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    margin-right: 80px;
+    margin-left: 10px;
+    padding: 20px;
+  }
+  
+  .superhost-info {
+    display: flex;
+  }
+  
+  .co-hosts {
+    display: flex;
+  }
+  
+  .host-details {
+    display: flex;
+  }
+  
+  .superhost-info {
+    margin-bottom: 10px;
+  }
+  
+  .superhost-info h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .superhost-info p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .co-hosts h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .co-host-images {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .co-host-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .host-details {
+    margin-top: 0px;
+  }
+  
+  .host-details h3 {
+    font-size: 16px;
+    margin-bottom: 0px;
+  }
+  
+  .detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+  
+  .detail-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+  }
+  
+  .message-button {
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 16px;
+    width: 40%;
+  }
+  
+  .show-more {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .user-r h1 {
+      font-size: 20px;
+    }
+  
+    .user-rating {
+      flex-direction: column;
+    }
+  
+    .host-card,
+    .co-host-card {
+      flex-basis: 100%;
+    }
+  
+    .co-host-card {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  
+    .message-button {
+      font-size: 10px;
+      padding: 10px 20px;
+  
+      width: 30%;
+  
+  
+    }
+  }
+  
+
+  .things-to {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 1%;
+  }
+  
+  .col-1,
+  .col-2,
+  .col-3 {
+    flex: 1;
+  
+    padding: 10px;
+    /* Add padding for spacing */
+    box-sizing: border-box;
+  
+  }
+  
+  @media screen and (max-width: 768px) {
+    .things h3 {
+      display: none;
+    }
+  
+    .things-to {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .col-1,
+    .col-2,
+    .col-3 {
+      font-size: 14px;
+    }
+  }

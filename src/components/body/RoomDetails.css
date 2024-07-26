@@ -1,0 +1,52 @@
+.room-details {
+  margin: 30px;
+}
+.bed-img {
+  height: 60%;
+  width: 60%;
+}
+
+.amenities-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.amenity {
+  display: flex;
+  align-items: center;
+}
+
+.amenity-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #888;
+}
+
+amen-btn {
+  /* position: a; */
+  width: 30%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.amen-1,
+.amen-2 {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .amen-2 {
+    display: none;
+  }
+}

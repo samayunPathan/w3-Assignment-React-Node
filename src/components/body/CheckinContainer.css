@@ -1,0 +1,132 @@
+.container {
+  width: 70%;
+  margin: 30px;
+  padding: 20px;
+}
+
+.header {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.subheader {
+  color: #717171;
+  font-size: 14px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.month-year {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #222222;
+}
+
+.calendar-check {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.month {
+  width: 50%;
+}
+
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 8px;
+}
+
+.week-day {
+  text-align: center;
+  font-size: 12px;
+  color: #717171;
+}
+
+.days-check {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.day {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.day:hover {
+  background-color: #f7f7f7;
+}
+
+.day.selected {
+  background-color: #222222;
+  color: white;
+}
+
+.day.disabled {
+  color: #dddddd;
+  cursor: default;
+}
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.btn-cal-icon,
+.btn-cal {
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-cal-icon {
+  background: none;
+}
+
+.btn-cal {
+  background-color: #0077cc;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.btn-cal:hover,
+.btn-cal-icon:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 700px) {
+  .calendar-check {
+    flex-direction: column;
+  }
+  .month {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .clear-button {
+    visibility: hidden;
+  }
+  .btn-cal-icon,
+  .btn-cal {
+    font-size: 10px;
+  }
+}
