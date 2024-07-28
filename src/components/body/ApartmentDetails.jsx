@@ -68,7 +68,7 @@ const ApartmentDetails = ({ hotelData, roomsData }) => {
       </div>
       <div className="descript">
         <p>
-          Some info has automatically translated. <a href="/">link text</a>
+          Some info has automatically translated. <a href="#">link text</a>
         </p>
         <div>
           <p>{hotelData.description}</p>
