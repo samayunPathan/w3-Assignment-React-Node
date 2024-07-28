@@ -24,7 +24,7 @@ const HostContainer = ({host_information}) => {
             <h3>Born in 80s</h3>
             <p>My work: Hospitality</p>
             <p>Hello world! I love traveling and welcoming guests to my country, Bangladesh...</p>
-            <p><a href="/">see more</a></p>
+            <p><a href="#">see more</a></p>
           </div>
         </div>
 

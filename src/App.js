@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     // Fetch hotel data
-    fetch('http://localhost:3001/hotels/Pathan-Boutique-Hotel')
+    fetch('http://localhost:3001/hotels/Pathan-Royal-Retreat')
       .then(response => response.json())
       .then(data => {
         setHotelData(data);
@@ -24,7 +24,7 @@ function App() {
       .catch(error => console.error('Error fetching hotel data:', error));
 
     // Fetch rooms data
-    fetch('http://localhost:3001/hotels/Pathan-Boutique-Hotel/rooms')
+    fetch('http://localhost:3001/hotels/Pathan-Royal-Retreat/rooms')
       .then(response => response.json())
       .then(data => setRoomsData(data))
       .catch(error => console.error('Error fetching rooms data:', error));
