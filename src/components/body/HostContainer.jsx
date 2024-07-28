@@ -29,7 +29,7 @@ const HostContainer = ({host_information}) => {
         </div>
 
         <div className="co-host-card">
-          <h3>Fernando is a Superhost</h3>
+          <h3>{host_information} is a Superhost</h3>
           <div className="superhost-info">
             <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
           </div>
