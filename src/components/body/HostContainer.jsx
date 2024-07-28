@@ -55,19 +55,19 @@ const HostContainer = ({host_information}) => {
                         <h5>house rules</h5>
                         <p>checking after</p>
                         <p>checking before</p>
-                        <p><a href="/">see more</a></p>
+                        <p><a href="#">see more</a></p>
                     </div>
                     <div class="col-2">
                         <h5>house rules</h5>
                         <p>checking after</p>
                         <p>checking before</p>
-                        <p><a href="/">see more</a></p>
+                        <p><a href="#">see more</a></p>
                     </div>
                     <div class="col-3">
                         <h5>house rules</h5>
                         <p>checking after</p>
                         <p>checking before</p>
-                        <p><a href="/">see more</a></p>
+                        <p><a href="#">see more</a></p>
                     </div>
                 </div>
             </div>
