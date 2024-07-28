@@ -69,7 +69,8 @@
 .days-cal {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  font-size: 8px;
+  font-size: 12px;
+
 }
 
 .day-cal {
@@ -114,7 +115,7 @@
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 18px;
+  /* font-size: 18px; */
 }
 
 .flexible-options button:hover,

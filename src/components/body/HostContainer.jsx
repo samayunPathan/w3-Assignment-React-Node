@@ -1,6 +1,6 @@
 import React from 'react';
 import './HostContainer.css'; 
-const HostContainer = () => {
+const HostContainer = ({host_information}) => {
   return (
     <div className="user-r">
       <h1>Meet your Host</h1>
@@ -10,7 +10,7 @@ const HostContainer = () => {
             <div className="host-card-1-1">
               <img src="/user-r.jpg" alt="Pranto Pathan" className="host-image" />
               <div className="host-info">
-                <h2 className="host-name">Samayun</h2>
+                <h2 className="host-name">{host_information}</h2>
                 <span className="superhost-badge">Superhost</span>
               </div>
             </div>

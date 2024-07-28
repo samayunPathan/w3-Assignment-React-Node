@@ -1,29 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./Imggallery.css";
-import {Img} from 'react-image'
+import { Img } from "react-image";
 import ShareSaveCon from "./ShareSaveCon";
 
-const ComfyApartment = () => {
+const ComfyApartment = ({ hotelData }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showFullscreenGallery, setShowFullscreenGallery] = useState(false);
   const [hotelImages, setHotelImages] = useState([]);
   const [hotelTitle, setHotelTitle] = useState("");
-  
 
-  const SERVER_BASE_URL = 'http://localhost:3001';
+  const SERVER_BASE_URL = "http://localhost:3001";
 
   useEffect(() => {
-    fetch('http://localhost:3001/hotels/Hotel-Radisson-Blu')
-      .then(response => response.json())
-      .then(data => {
-        const fullImageUrls = data.images.map(imagePath => `${SERVER_BASE_URL}${imagePath}`);
-        setHotelImages(fullImageUrls);
-        console.log(fullImageUrls);
-        setHotelTitle(data.title || "Comfy New Apt. in Pueblo Libre!");
-      })
-      .catch(error => console.error('Error fetching hotel data:', error));
-  }, []);
-
+    if (hotelData) {
+      const fullImageUrls = hotelData.images.map(
+        (imagePath) => `${SERVER_BASE_URL}${imagePath}`
+      );
+      setHotelImages(fullImageUrls);
+      setHotelTitle(hotelData.title || "Comfy New Apt. in Pueblo Libre!");
+    }
+  }, [hotelData]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -64,8 +60,8 @@ const ComfyApartment = () => {
 
   return (
     <div className="main">
-      <h1 style={{color:"red"}}>{hotelTitle}</h1>
-      <ShareSaveCon/>
+      <h1>{hotelTitle}</h1>
+      <ShareSaveCon />
 
       <div className="image-gallery">
         <div className="main-image">
@@ -93,7 +89,7 @@ const ComfyApartment = () => {
                       <img src={hotelImages[3]} alt="Secondary Image 3" />
                     </div>
                     <div>
-                      <img src={hotelImages[3]} alt="Secondary Image 4" />
+                      <img src={hotelImages[4]} alt="Secondary Image 4" />
                     </div>
                   </>
                 )}
@@ -112,9 +108,9 @@ const ComfyApartment = () => {
       {showFullscreenGallery && (
         <div className="fullscreen-gallery">
           <div className="ShareSave-con">
-            <ShareSaveCon/>
+            <ShareSaveCon />
           </div>
-          
+
           <button
             className="close-gallery"
             onClick={() => setShowFullscreenGallery(false)}

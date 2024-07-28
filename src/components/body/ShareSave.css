@@ -16,7 +16,6 @@
   }
   
   .action-button {
-    /* background: none; */
     border: 1px solid black;
     border-radius: 10px;
     padding: 5px;
@@ -24,8 +23,7 @@
     background: #fcfa96;
     cursor: pointer;
     color: rgb(10, 9, 9);
-    font-size: 20px;
-    /* text-decoration: underline; */
+
   }
   
   .button-text {
@@ -44,7 +42,7 @@
   
   @media (max-width: 768px) {
     .listing-header {
-      flex-direction: column;
+     margin-top: 45px;
       align-items: flex-start;
       font-size: 10px;
     }
