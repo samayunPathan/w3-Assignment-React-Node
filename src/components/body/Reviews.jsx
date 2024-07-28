@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Reviews = () => {
     return (
-        <div>
+        <div style={{margin:'30px'}}>
+            <hr></hr>
             <div class="reviews" style={{margin:'30px'}}>
-                <hr></hr>
+                
                 <h2>No reviews (yet)</h2>
                 <div class="review-count">
                     <span class="star"><FontAwesomeIcon icon="fa-solid fa-star" /></span>
@@ -13,6 +14,7 @@ const Reviews = () => {
                         reviews</span></span>
                 </div>
             </div>
+            <hr />
         </div>
     )
 }

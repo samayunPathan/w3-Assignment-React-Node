@@ -115,6 +115,9 @@
 }
 
 @media (max-width: 700px) {
+  .header{
+    font-size: 18px;
+  }
   .calendar-check {
     flex-direction: column;
   }

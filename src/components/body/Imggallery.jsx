@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./Imggallery.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUpFromBracket,
-  faHeart,
-  faCopy,
-  faEnvelope,
-  faMessage,
-  faCode,
-} from "@fortawesome/free-solid-svg-icons";
+import {Img} from 'react-image'
 import ShareSaveCon from "./ShareSaveCon";
 
 const ComfyApartment = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showFullscreenGallery, setShowFullscreenGallery] = useState(false);
+  const [hotelImages, setHotelImages] = useState([]);
+  const [hotelTitle, setHotelTitle] = useState("");
+  
 
+  const SERVER_BASE_URL = 'http://localhost:3001';
 
-  const images = [
-    "../room1.jpg",
-    "../room2.jpg",
-    "../room3.jpeg",
-    "../room4.jpeg",
-  ];
+  useEffect(() => {
+    fetch('http://localhost:3001/hotels/Hotel-Radisson-Blu')
+      .then(response => response.json())
+      .then(data => {
+        const fullImageUrls = data.images.map(imagePath => `${SERVER_BASE_URL}${imagePath}`);
+        setHotelImages(fullImageUrls);
+        console.log(fullImageUrls);
+        setHotelTitle(data.title || "Comfy New Apt. in Pueblo Libre!");
+      })
+      .catch(error => console.error('Error fetching hotel data:', error));
+  }, []);
+
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -44,50 +46,60 @@ const ComfyApartment = () => {
   }, [showFullscreenGallery]);
 
   useEffect(() => {
-    images.forEach((src) => {
+    hotelImages.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
-  }, []);
+  }, [hotelImages]);
 
   const showNextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % hotelImages.length);
   };
 
   const showPrevImage = () => {
     setCurrentImageIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) => (prevIndex - 1 + hotelImages.length) % hotelImages.length
     );
   };
 
-
-
   return (
     <div className="main">
-       <h1>Comfy New Apt. in Pueblo Libre!</h1>
+      <h1 style={{color:"red"}}>{hotelTitle}</h1>
       <ShareSaveCon/>
 
       <div className="image-gallery">
         <div className="main-image">
-          <img src="/room1.jpg" alt="Bedroom" />
+          {hotelImages.length > 0 && (
+            <Img src={hotelImages[0]} alt="Main Image" />
+          )}
         </div>
         <div className="secondary-images">
-          <div className="top-row">
-            <div>
-              <img src="/room2.jpg" alt="Living Room" />
-            </div>
-            <div>
-              <img src="/room2.jpg" alt="Living Room" />
-            </div>
-          </div>
-          <div className="bottom-row">
-            <div>
-              <img src="/room2.jpg" alt="Living Room" />
-            </div>
-            <div>
-              <img src="/room2.jpg" alt="Living Room" />
-            </div>
-          </div>
+          {hotelImages.length > 1 && (
+            <>
+              <div className="top-row">
+                <div>
+                  <img src={hotelImages[1]} alt="Secondary Image 1" />
+                </div>
+                {hotelImages.length > 2 && (
+                  <div>
+                    <img src={hotelImages[2]} alt="Secondary Image 2" />
+                  </div>
+                )}
+              </div>
+              <div className="bottom-row">
+                {hotelImages.length > 3 && (
+                  <>
+                    <div>
+                      <img src={hotelImages[3]} alt="Secondary Image 3" />
+                    </div>
+                    <div>
+                      <img src={hotelImages[3]} alt="Secondary Image 4" />
+                    </div>
+                  </>
+                )}
+              </div>
+            </>
+          )}
         </div>
         <button
           className="show-all"
@@ -100,7 +112,7 @@ const ComfyApartment = () => {
       {showFullscreenGallery && (
         <div className="fullscreen-gallery">
           <div className="ShareSave-con">
-          <ShareSaveCon/>
+            <ShareSaveCon/>
           </div>
           
           <button
@@ -114,22 +126,21 @@ const ComfyApartment = () => {
               &lt;
             </button>
             <div className="fullscreen-image-container">
-              <img
-                src={images[currentImageIndex]}
-                alt=""
-                className="fullscreen-image"
-              />
+              {hotelImages.length > 0 && (
+                <img
+                  src={hotelImages[currentImageIndex]}
+                  alt={`Image ${currentImageIndex + 1}`}
+                  className="fullscreen-image"
+                />
+              )}
             </div>
             <button className="next-image" onClick={showNextImage}>
               &gt;
             </button>
           </div>
           <div className="image-counter">
-            {currentImageIndex + 1} / {images.length}
+            {currentImageIndex + 1} / {hotelImages.length}
           </div>
-      
-      
-    
         </div>
       )}
     </div>
