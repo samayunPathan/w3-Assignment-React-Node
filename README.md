@@ -66,7 +66,7 @@ Install dependencies:
 Start the development server:
 `npm start`
 
-Access the application at http://localhost:3000
+Access the application at your own base url which store at config.json 
 
 ## Routes
 
