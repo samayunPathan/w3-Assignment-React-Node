@@ -61,19 +61,19 @@ Install dependencies:
 `npm install`
 
 
-Running the Application
+## Running the Application
 
 Start the development server:
 `npm start`
 
 Access the application at http://localhost:3000
 
-Routes
+## Routes
 
 `/hotel/:hotelSlug: `Display details for a specific hotel
 `*: 404 page for unknown routes`
 
-Configuration
+## Configuration
 
 `src/config.json`
 Contains API base URL and other static values
