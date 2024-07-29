@@ -1,9 +1,22 @@
 
 # Assigment : React-Node.js
+## Table of Contents
 
+- [Assignment: React-Node.js](#assignment--react-nodejs)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Setup and Installation](#setup-and-installation)
+- [Running the Application](#running-the-application)
+- [Routes](#routes)
+- [Configuration](#configuration)
+- [Dependencies](#dependencies)
+
+## Assigment : React-Node.js
 This is the frontend part of the Hotel Details Application, built with React.
 
 This React application displays hotel details, fetching data from a backend API. It includes features like shimmer loading and 404 page handling.
+
 
 
 ## Features
@@ -22,6 +35,21 @@ This React application displays hotel details, fetching data from a backend API.
 - React
 - React Router
 - Shimmer Loader
+
+## Project Structue 
+
+project/
+├── public/               
+│            
+│   
+├── src/                            
+│   ├── components/                        
+│   ├── App.js            
+│   ├── index.js           
+│   └── ...
+├── .gitignore             
+├── package.json           
+├── README.md             
 
 
 ## Setup and Installation
@@ -49,4 +77,9 @@ Configuration
 
 `src/config.json`
 Contains API base URL and other static values
+
+## Dependencies
+- React Router Dom
+- Shimmer Loder
+  
 
