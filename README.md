@@ -40,7 +40,7 @@ This React application displays hotel details, fetching data from a backend API.
 
 project/
 ├── public/               
-│            
+├── config.json           
 │   
 ├── src/                            
 │   ├── components/                        
