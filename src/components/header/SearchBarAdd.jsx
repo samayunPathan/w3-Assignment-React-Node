@@ -7,11 +7,12 @@ import CustomDateRangePicker from "./CustomCalendar";
 const SearchBarAdd = () => {
   const [where, setWhere] = useState("");
   const [showRegionDropdown, setShowRegionDropdown] = useState(false);
-  const [showCheckInPicker, setShowCheckInPicker] = useState(false);
-  const [showCheckOutPicker, setShowCheckOutPicker] = useState(false);
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
-
+  const [checkinFlexible, setCheckinFlexible] = useState("");
+  const [checkoutFlexible, setCheckoutFlexible] = useState("");
+  const [showCheckInPicker, setShowCheckInPicker] = useState(false);
+  const [showCheckOutPicker, setShowCheckOutPicker] = useState(false);
   const [guests, setGuests] = useState("");
   const [showGuestDropdown, setShowGuestDropdown] = useState(false);
   const [guestCounts, setGuestCounts] = useState({
@@ -78,8 +79,6 @@ const SearchBarAdd = () => {
     if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
       setShowRegionDropdown(false);
       setShowGuestDropdown(false);
-
-      // Don't close the calendar here
     }
   };
 
@@ -105,6 +104,20 @@ const SearchBarAdd = () => {
     setShowRegionDropdown(false);
     setShowGuestDropdown(false);
   };
+
+  const handleCheckinChange = (date, flexibleRange) => {
+    setCheckin(date ? date.toDateString() : "");
+    setCheckinFlexible(flexibleRange !== "exact" ? flexibleRange : "");
+  };
+
+  const handleCheckoutChange = (date, flexibleRange) => {
+    setCheckout(date ? date.toDateString() : "");
+    setCheckoutFlexible(flexibleRange !== "exact" ? flexibleRange : "");
+  };
+
+
+
+
 
   return (
     <div id="search-bar-add" className="search-bar-add" ref={searchBarRef}>
@@ -144,17 +157,17 @@ const SearchBarAdd = () => {
         </div>
       )}
 
-      <input
+<input
         type="text"
         id="checkin-btn"
         placeholder="Check-in"
-        value={checkin}
+        value={`${checkin}${checkinFlexible ? ` ${checkinFlexible}` : ''}`}
         onClick={handleCheckInClick}
         readOnly
       />
       {showCheckInPicker && (
         <CustomDateRangePicker
-          onDateRangeChange={handleDateRangeChange}
+          onDateRangeChange={handleCheckinChange}
           isCheckIn={true}
         />
       )}
@@ -162,17 +175,16 @@ const SearchBarAdd = () => {
         type="text"
         id="checkout-btn"
         placeholder="Check-out"
-        value={checkout}
+        value={`${checkout}${checkoutFlexible ? ` ${checkoutFlexible}` : ''}`}
         onClick={handleCheckOutClick}
         readOnly
       />
       {showCheckOutPicker && (
         <CustomDateRangePicker
-          onDateRangeChange={handleDateRangeChange}
+          onDateRangeChange={handleCheckoutChange}
           isCheckIn={false}
         />
-      )}
-
+        )}
       <input
         type="text"
         id="guests-btn"
@@ -181,6 +193,10 @@ const SearchBarAdd = () => {
         onClick={handleGuestsClick}
         readOnly
       />
+
+
+
+
 
       {showGuestDropdown && (
         <div id="guest-dropdown" className="guest-dropdown">

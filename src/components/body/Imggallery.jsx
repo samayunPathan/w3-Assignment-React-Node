@@ -89,7 +89,7 @@ const ComfyApartment = ({ hotelData }) => {
                       <img src={hotelImages[3]} alt="Secondary Image 3" />
                     </div>
                     <div>
-                      <img src={hotelImages[4]} alt="Secondary Image 4" />
+                      <img src={hotelImages[2]} alt="Secondary Image 4" />
                     </div>
                   </>
                 )}

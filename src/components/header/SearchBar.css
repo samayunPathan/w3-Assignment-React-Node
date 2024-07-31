@@ -6,24 +6,29 @@
   width: 100%;
   margin-top: 1%;
   padding: 0 2vw;
+  box-sizing: border-box;
 }
 
 .search-bar {
   padding: 0.5vw;
   border: 1px solid #635d5d;
-  border-radius: 30px;
+  border-radius: 40px;
   margin: 0 auto;
   height: auto;
-  width: fit-content;
+  width: auto;
+  max-width: 100%;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn, .btn-r {
   border: none;
   background: none;
-  padding: 1vw;
   font-size: calc(10px + 0.5vw);
+  padding: 0.5vw;
+  white-space: nowrap;
 }
 
 .btn {
@@ -39,6 +44,8 @@
   height: 3vw;
   min-width: 30px;
   min-height: 30px;
+  max-width: 40px;
+  max-height: 40px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -54,8 +61,8 @@
   display: flex;
   align-items: center;
   margin-left: auto;
-  position: absolute;
-  right: 2vw;
+  position: relative;
+  right: 0;
   cursor: pointer;
 }
 
@@ -91,6 +98,7 @@
 
   .search-bar {
     margin-bottom: 2vw;
+
   }
 
   .profile-container {

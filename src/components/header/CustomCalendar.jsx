@@ -3,31 +3,19 @@ import "./CustomCalendar.css";
 
 const CustomDateRangePicker = ({ onDateRangeChange, isCheckIn }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [hoverDate, setHoverDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [flexibleRange, setFlexibleRange] = useState("exact");
 
   const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "January", "February", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December"
   ];
 
-  const daysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
-
   useEffect(() => {
-    onDateRangeChange(startDate, endDate);
-  }, [startDate, endDate, onDateRangeChange]);
+    onDateRangeChange(selectedDate, flexibleRange);
+  }, [selectedDate, flexibleRange, onDateRangeChange]);
+
+  const daysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
 
   const renderCalendar = (month, year) => {
     const firstDay = new Date(year, month, 1).getDay();
@@ -40,24 +28,13 @@ const CustomDateRangePicker = ({ onDateRangeChange, isCheckIn }) => {
 
     for (let day = 1; day <= daysCount; day++) {
       const date = new Date(year, month, day);
-      const isSelected =
-        (startDate &&
-          date >= startDate &&
-          date <= (endDate || hoverDate || startDate)) ||
-        (endDate && date <= endDate && date >= startDate);
-      const isStart =
-        startDate && date.toDateString() === startDate.toDateString();
-      const isEnd = endDate && date.toDateString() === endDate.toDateString();
+      const isSelected = selectedDate && date.toDateString() === selectedDate.toDateString();
 
       days.push(
         <div
           key={`${month}-${day}`}
-          className={`day-cal ${isSelected ? "selected" : ""} ${
-            isStart ? "start" : ""
-          } ${isEnd ? "end" : ""}`}
+          className={`day-cal ${isSelected ? "selected" : ""}`}
           onClick={() => handleDateClick(date)}
-          onMouseEnter={() => setHoverDate(date)}
-          onMouseLeave={() => setHoverDate(null)}
         >
           {day}
         </div>
@@ -68,33 +45,19 @@ const CustomDateRangePicker = ({ onDateRangeChange, isCheckIn }) => {
   };
 
   const handleDateClick = (date) => {
-    if (!startDate || (startDate && endDate) || date < startDate) {
-      setStartDate(date);
-      setEndDate(null);
-    } else {
-      setEndDate(date);
-    }
+    setSelectedDate(date);
   };
 
-  const handleFlexibleRange = (days) => {
-    setFlexibleRange(days);
-    if (startDate) {
-      const newEndDate = new Date(startDate);
-      newEndDate.setDate(newEndDate.getDate() + (days === "exact" ? 0 : days));
-      setEndDate(newEndDate);
-    }
+  const handleFlexibleRange = (range) => {
+    setFlexibleRange(range);
   };
 
   const nextMonth = () => {
-    setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
-    );
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
   };
 
   const prevMonth = () => {
-    setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
-    );
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
   };
 
   return (
@@ -108,9 +71,7 @@ const CustomDateRangePicker = ({ onDateRangeChange, isCheckIn }) => {
         <div className="calendar">
           <div className="calendar-header">
             <button onClick={prevMonth}>&lt;</button>
-            <span>{`${
-              monthNames[currentDate.getMonth()]
-            } ${currentDate.getFullYear()}`}</span>
+            <span>{`${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`}</span>
           </div>
           <div className="weekdays">
             <div>Su</div>
@@ -125,40 +86,32 @@ const CustomDateRangePicker = ({ onDateRangeChange, isCheckIn }) => {
             {renderCalendar(currentDate.getMonth(), currentDate.getFullYear())}
           </div>
         </div>
-        {window.innerWidth > 768 && (
-          <div className="calendar">
-            <div className="calendar-header">
-              <span>{`${monthNames[(currentDate.getMonth() + 1) % 12]} ${
-                currentDate.getMonth() === 11
-                  ? currentDate.getFullYear() + 1
-                  : currentDate.getFullYear()
-              }`}</span>
-              <button onClick={nextMonth}>&gt;</button>
-            </div>
-            <div className="weekdays">
-              <div>Su</div>
-              <div>Mo</div>
-              <div>Tu</div>
-              <div>We</div>
-              <div>Th</div>
-              <div>Fr</div>
-              <div>Sa</div>
-            </div>
-            <div className="days-cal">
-              {renderCalendar(
-                (currentDate.getMonth() + 1) % 12,
-                currentDate.getMonth() === 11
-                  ? currentDate.getFullYear() + 1
-                  : currentDate.getFullYear()
-              )}
-            </div>
+        <div className="calendar">
+          <div className="calendar-header">
+            <span>{`${monthNames[(currentDate.getMonth() + 1) % 12]} ${
+              currentDate.getMonth() === 11 ? currentDate.getFullYear() + 1 : currentDate.getFullYear()
+            }`}</span>
+            <button onClick={nextMonth}>&gt;</button>
           </div>
-        )}
+          <div className="weekdays">
+            <div>Su</div>
+            <div>Mo</div>
+            <div>Tu</div>
+            <div>We</div>
+            <div>Th</div>
+            <div>Fr</div>
+            <div>Sa</div>
+          </div>
+          <div className="days-cal">
+            {renderCalendar(
+              (currentDate.getMonth() + 1) % 12,
+              currentDate.getMonth() === 11 ? currentDate.getFullYear() + 1 : currentDate.getFullYear()
+            )}
+          </div>
+        </div>
       </div>
       <div className="date-range-info">
-        {startDate && endDate
-          ? `${startDate.toDateString()} - ${endDate.toDateString()}`
-          : "Select your dates"}
+        {selectedDate ? selectedDate.toDateString() : "Select your date"}
       </div>
       <div className="flexible-options">
         <button
@@ -168,34 +121,28 @@ const CustomDateRangePicker = ({ onDateRangeChange, isCheckIn }) => {
           Exact dates
         </button>
         <button
-          className={flexibleRange === 1 ? "active" : ""}
-          onClick={() => handleFlexibleRange(1)}
+          className={flexibleRange === "± 1 day" ? "active" : ""}
+          onClick={() => handleFlexibleRange("± 1 day")}
         >
-          ±1 day
+          ± 1 day
         </button>
         <button
-          className={flexibleRange === 2 ? "active" : ""}
-          onClick={() => handleFlexibleRange(2)}
+          className={flexibleRange === "± 2 days" ? "active" : ""}
+          onClick={() => handleFlexibleRange("± 2 days")}
         >
-          ±2 days
+          ± 2 days
         </button>
         <button
-          className={flexibleRange === 3 ? "active" : ""}
-          onClick={() => handleFlexibleRange(3)}
+          className={flexibleRange === "± 3 days" ? "active" : ""}
+          onClick={() => handleFlexibleRange("± 3 days")}
         >
-          ±3 days
+          ± 3 days
         </button>
         <button
-          className={flexibleRange === 7 ? "active" : ""}
-          onClick={() => handleFlexibleRange(7)}
+          className={flexibleRange === "± 7 days" ? "active" : ""}
+          onClick={() => handleFlexibleRange("± 7 days")}
         >
-          ±7 days
-        </button>
-        <button
-          className={flexibleRange === 14 ? "active" : ""}
-          onClick={() => handleFlexibleRange(14)}
-        >
-          ±14 days
+          ± 7 days
         </button>
       </div>
     </div>
