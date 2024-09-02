@@ -1,23 +1,18 @@
 
 # Assigment : React-Node.js
 ## Table of Contents
-
-- [Assignment: React-Node.js](#assignment--react-nodejs)
+- [Assignment: React-Node.js](#assignment-react-nodejs)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
-- [Setup and Installation](#setup-and-installation)
 - [Running the Application](#running-the-application)
-- [Routes](#routes)
-- [Configuration](#configuration)
 - [Dependencies](#dependencies)
 
-## Assigment : React-Node.js
-This is the frontend part of the Hotel Details Application, built with React.
+## Assignment: React-Node.js
+This project replicates the frontend of an Airbnb-style hotel booking website using React.
+The application displays hotel information fetched from a backend API built with Express.js, which contains data corresponding to the frontend's hotel details. It includes features like shimmer loading for an improved user experience and 404 page handling for invalid routes, ensuring a smooth and user-friendly interface.
 
-This React application displays hotel details, fetching data from a backend API. It includes features like shimmer loading and 404 page handling.
-
-
+For the backend code, refer to the [Backend Repository](https://github.com/samayunPathan/Backend-w3-Assignment-React-Node).
 
 ## Features
 
@@ -36,7 +31,7 @@ This React application displays hotel details, fetching data from a backend API.
 - React Router
 - Shimmer Loader
 
-## Project Structue 
+## Project Structure 
 
 project/
 ├── public/               
